@@ -1,9 +1,11 @@
 #ifndef frog_H
 #define frog_H
 
+#include <QtCore/QDebug>
 #include <QtGui/QMainWindow>
 #include "ui_mainwindow.h"
 #include "gamemanager.h"
+#include "help_browser/helpbrowser.h"
 
 namespace Ui
 {
@@ -20,6 +22,7 @@ public:
 public slots:
 	void show();
 	void on_actionNew_triggered();
+	void on_actionHelp_triggered();
 	
 private:
 	Ui::MainWindow *ui;

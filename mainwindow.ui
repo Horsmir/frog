@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
-    <height>894</height>
+    <width>1264</width>
+    <height>615</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -18,6 +18,10 @@
   </property>
   <property name="windowTitle">
    <string>Пасьянс &quot;Лягушка&quot;</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="frog.qrc">
+    <normaloff>:/icons/icon.svg</normaloff>:/icons/icon.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -47,7 +51,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>954</width>
+     <width>1264</width>
      <height>20</height>
     </rect>
    </property>
@@ -85,15 +89,13 @@
    <addaction name="separator"/>
    <addaction name="actionHelp"/>
    <addaction name="actionAbout"/>
-   <addaction name="actionAboutQt"/>
    <addaction name="separator"/>
    <addaction name="actionExit"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
-    <iconset theme="document-new">
-     <normaloff/>
-    </iconset>
+    <iconset resource="frog.qrc">
+     <normaloff>:/icons/document-new.png</normaloff>:/icons/document-new.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Новая игра</string>
@@ -103,6 +105,10 @@
    </property>
   </action>
   <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="frog.qrc">
+     <normaloff>:/icons/help-contents.png</normaloff>:/icons/help-contents.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Правила игры...</string>
    </property>
@@ -111,6 +117,10 @@
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="frog.qrc">
+     <normaloff>:/icons/help-about.png</normaloff>:/icons/help-about.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;О программе...</string>
    </property>
@@ -128,9 +138,8 @@
   </action>
   <action name="actionExit">
    <property name="icon">
-    <iconset theme="dialog-close">
-     <normaloff/>
-    </iconset>
+    <iconset resource="frog.qrc">
+     <normaloff>:/icons/application-exit.png</normaloff>:/icons/application-exit.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Выход</string>
@@ -143,7 +152,9 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="frog.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>actionExit</sender>
