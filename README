@@ -1,7 +1,7 @@
-Frog 0.2.0
+Frog 0.2.1
 
-This program - solitaire game.
-This solitaire game with two decks. There are eight bases, based on aces
+This program - patience card game.
+This patience game with two decks. There are eight bases, based on aces
 and five stacks reset.
 
 Copyright (C) 2012  Roman Brown <firdragon76@gmail.com>
