@@ -9,6 +9,7 @@
 #include "ui_mainwindow.h"
 #include "gamemanager.h"
 #include "help_browser/helpbrowser.h"
+#include "frogconfigure.h"
 
 namespace Ui
 {

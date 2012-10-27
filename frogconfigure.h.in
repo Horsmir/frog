@@ -1,0 +1,7 @@
+#include <QtCore/QString>
+
+const QString APP_PATH = "@CMAKE_INSTALL_PREFIX@";
+const QString FROG_VERSION_MAJOR = "@MAJOR_VERSION@";
+const QString FROG_VERSION_MINOR = "@MINOR_VERSION@";
+const QString FROG_VERSION_PATCH = "@PATCH_VERSION@";
+const QString VERSION = "@FROG_VERSION@";

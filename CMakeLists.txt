@@ -21,7 +21,7 @@ message(STATUS "CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
 
 set(MAJOR_VERSION 0)
 set(MINOR_VERSION 2)
-set(PATCH_VERSION 1)
+set(PATCH_VERSION 2)
 set(FROG_VERSION ${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION})
 add_definitions(-DFROG_VERSION=\"${FROG_VERSION}\")
 message(STATUS "")
@@ -32,6 +32,15 @@ find_package(Qt4 REQUIRED)
 
 include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
 
+configure_file (
+  "${PROJECT_SOURCE_DIR}/frogconfigure.h.in"
+  "${PROJECT_BINARY_DIR}/frogconfigure.h"
+  )
+configure_file (
+  "${PROJECT_SOURCE_DIR}/README.in"
+  "${PROJECT_SOURCE_DIR}/README"
+  )
+  
 set(frog_SRCS gamemanager.cpp cardgraphicsscene.cpp pilepack.cpp pilefault.cpp pilebase.cpp pilereserve.cpp pile.cpp cardsvgitem.cpp frog.cpp main.cpp)
 set(helpbrowser_SRCS help_browser/helpbrowser.cpp)
 set(frog_UIS mainwindow.ui help_browser/helpform.ui)
