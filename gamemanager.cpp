@@ -382,7 +382,11 @@ void GameManager::endGame()
 	if(end == NUM_PILES_BASE)
 	{
 		QFont font("Dejavu", 24, QFont::Bold);
-		scene->addText(trUtf8("Вы выйграли!!!"), font);
+		QGraphicsTextItem *endGameText = scene->addText(trUtf8("Вы выйграли!!!"), font);
+		QRectF rc = endGameText->boundingRect();
+		endGameText->setPos(rc.x() - rc.center().x(), rc.y() - rc.center().y());
+		endGameText->setDefaultTextColor(QColor(255, 255, 0));
+		endGameText->setZValue(100);
 	}
 }
 

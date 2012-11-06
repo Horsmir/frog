@@ -2,9 +2,15 @@
 
 frog::frog(QWidget* parent, Qt::WindowFlags flags) : QMainWindow(parent, flags), ui(new Ui::MainWindow)
 {
+	QString cardImgFile;
+#ifdef Q_OS_LINUX
 	appDir.setPath(APP_PATH);
-	QString cardImgFile = appDir.absolutePath() + "/share/frog/images/tigullio-bridge.svg";
-	qDebug() << cardImgFile;
+	cardImgFile = appDir.absolutePath() + "/share/frog/images/tigullio-bridge.svg";
+#endif
+#ifdef Q_OS_WIN
+	appDir = QDir(QCoreApplication::applicationDirPath());
+	cardImgFile = appDir.absolutePath() + "/images/tigullio-bridge.svg";
+#endif
 	ui->setupUi(this);
 	manager = new GameManager(this);
 	QSvgRenderer *render = new QSvgRenderer(cardImgFile, this);
@@ -12,6 +18,10 @@ frog::frog(QWidget* parent, Qt::WindowFlags flags) : QMainWindow(parent, flags),
 	
 	appName = "Frog";
 	firstPaint = true;
+	
+#ifdef Q_OS_WIN
+	setWindowIcon(QIcon(":/icons/frog.png"));
+#endif
 }
 
 frog::~frog()
@@ -34,7 +44,14 @@ void frog::on_actionNew_triggered()
 
 void frog::on_actionHelp_triggered()
 {
-	HelpBrowser::showPage(appDir.absolutePath() + "/share/doc/frog", "index.html");
+	QString helpPath;
+#ifdef Q_OS_LINUX
+	helpPath = appDir.absolutePath() + "/share/doc/frog";
+#endif
+#ifdef Q_OS_WIN
+	helpPath = appDir.absolutePath() + "/doc";
+#endif
+	HelpBrowser::showPage(helpPath, "index.html");
 }
 
 void frog::on_actionAbout_triggered()

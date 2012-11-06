@@ -1,6 +1,11 @@
 project(frog)
 cmake_minimum_required(VERSION 2.6)
 
+if(CMAKE_CROSSCOMPILING)
+  set(QT_HEADERS_DIR "/usr/i486-mingw32/include")
+  set(QT_LIBRARY_DIR "/usr/i486-mingw32/lib")
+endif(CMAKE_CROSSCOMPILING)
+
 if (NOT CMAKE_BUILD_TYPE)
     set ( CMAKE_BUILD_TYPE Release )
 endif (NOT CMAKE_BUILD_TYPE)
@@ -21,7 +26,7 @@ message(STATUS "CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
 
 set(MAJOR_VERSION 0)
 set(MINOR_VERSION 2)
-set(PATCH_VERSION 2)
+set(PATCH_VERSION 3)
 set(FROG_VERSION ${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION})
 add_definitions(-DFROG_VERSION=\"${FROG_VERSION}\")
 message(STATUS "")
@@ -40,7 +45,7 @@ configure_file (
   "${PROJECT_SOURCE_DIR}/README.in"
   "${PROJECT_SOURCE_DIR}/README"
   )
-  
+
 set(frog_SRCS gamemanager.cpp cardgraphicsscene.cpp pilepack.cpp pilefault.cpp pilebase.cpp pilereserve.cpp pile.cpp cardsvgitem.cpp frog.cpp main.cpp)
 set(helpbrowser_SRCS help_browser/helpbrowser.cpp)
 set(frog_UIS mainwindow.ui help_browser/helpform.ui)
@@ -50,7 +55,7 @@ qt4_automoc(${frog_SRCS} ${helpbrowser_SRCS})
 QT4_WRAP_UI(UI_HEADERS ${frog_UIS})
 QT4_ADD_RESOURCES(QRC_SOURCES ${frog_QRCS})
 
-add_executable(frog ${frog_SRCS} ${helpbrowser_SRCS} ${UI_HEADERS} ${QRC_SOURCES})
+add_executable(frog WIN32 ${frog_SRCS} ${helpbrowser_SRCS} ${UI_HEADERS} ${QRC_SOURCES})
 target_link_libraries(frog ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTSVG_LIBRARY})
 
 install(TARGETS frog RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
@@ -63,7 +68,7 @@ install(DIRECTORY images DESTINATION ${CMAKE_INSTALL_PREFIX}/share/frog)
 set(CPACK_PACKAGE_VERSION "${FROG_VERSION}")
 set(CPACK_SOURCE_GENERATOR "TBZ2")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "frog-${FROG_VERSION}")
-set(CPACK_IGNORE_FILES "/CVS/;/\\\\.git\;/\\\\.svn/;\\\\.swp$;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;build/;dist/;exp/;.*~")
+set(CPACK_IGNORE_FILES "/CVS/;/\\\\.git\;/\\\\.svn/;\\\\.swp$;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;build/;dist/;exp/;.*~;build-win32/;exp-win32/;install-win32/;*.ico")
 set(CPACK_SOURCE_IGNORE_FILES ${CPACK_IGNORE_FILES})
 include(CPack)
 # simulate autotools' "make dist"
